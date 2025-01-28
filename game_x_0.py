@@ -1,22 +1,19 @@
-# Игру «Крестики-нолики».
-# Консоль, куда будет выводиться ход игры.
-# Тут делать красиво мы умеем с помощью форматированных строк.
-# Неутолимое желание написать что-то реальное своими руками.
-# Размер поля предполагается равным 3x3.
 
 # Данная игра практически вся взята из интернета
 # я пытался реализовать игру с неограниченным полем, второй файл в данном репозитории, как раз ее и представляет
+# https://github.com/CherepanovRV/hello-world/blob/main/x%20and%200.py
 # единственное, что не могу реализовать это выход программы при определнии победы.
+
 
 board = list(range(1,10))
 
-def draw_board(board):
+def draw_board(board): # трисовка поля
    print("-" * 13)
    for i in range(3):
       print("|", board[0+i*3], "|", board[1+i*3], "|", board[2+i*3], "|")
       print("-" * 13)
 
-def take_input(player_token):
+def take_input(player_token): # ввод 'x' или 'o' в поле с соответсвующими проверками
    valid = False
    while not valid:
       player_answer = input("Куда поставим " + player_token+"? ")
@@ -34,7 +31,7 @@ def take_input(player_token):
       else:
         print("Некорректный ввод. Введите число от 1 до 9.")
 
-def check_win(board):
+def check_win(board): # проверка выишрышных комбинаций
    win_coord = ((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6))
    for each in win_coord:
        if board[each[0]] == board[each[1]] == board[each[2]]:
